@@ -6,21 +6,26 @@ import {
     Typography,
 } from '@mui/material'
 import './CardProduct.scss'
+import productArray from '../../utils/productArray'
 
 type Props = {}
 const CardProduct = (props: Props) => {
     return (
         <>
-            <Card className="card">
-                <CardContent>
-                    <Typography>iPhone12</Typography>
-                    <Typography>This is iPhone12 ...</Typography>
-                    <Typography>EUR 750</Typography>
-                </CardContent>
-                <CardActions>
-                    <Button variant="outlined">Buy</Button>
-                </CardActions>
-            </Card>
+            {productArray.map(({ id, title, description, price, currency }) => (
+                <Card className="card" key={id}>
+                    <CardContent>
+                        <Typography>{title}</Typography>
+                        <Typography>{description}</Typography>
+                        <Typography>
+                            {currency} {price}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button variant="outlined">Buy</Button>
+                    </CardActions>
+                </Card>
+            ))}
         </>
     )
 }
