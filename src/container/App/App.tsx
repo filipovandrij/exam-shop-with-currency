@@ -13,7 +13,7 @@ import { useState } from 'react'
 
 type Props = {}
 
-type Currency = 'EUR' | 'USD' | 'UAN'
+type Currency = 'EUR' | 'USD' | 'UAH'
 
 const App = (props: Props) => {
     const [currency, setCurrency] = useState<Currency>('EUR')
@@ -25,7 +25,7 @@ const App = (props: Props) => {
     const currencyRateList: Record<Currency, number> = {
         EUR: 1,
         USD: 1.1,
-        UAN: 40,
+        UAH: 40,
     }
 
     const renderPrice = (price: number) => {
@@ -59,9 +59,9 @@ const App = (props: Props) => {
                         </Button>
                         <Button
                             variant="contained"
-                            onClick={changeCurrency('UAN')}
+                            onClick={changeCurrency('UAH')}
                         >
-                            UAN
+                            UAH
                         </Button>
                     </div>
                     <div className="row">
