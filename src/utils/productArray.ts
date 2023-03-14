@@ -31,14 +31,6 @@ const productArray: Product[] = [
 ]
 
 
-export const getProductsObject = (array:Product[]) => 
-array.reduce(
-    (object,product) => ({
-        ...object,
-        [product.id]:product,
-    }),
-    {}
-    )
 
 
 

@@ -31,13 +31,14 @@ const App = (props: Props) => {
     const renderPrice = (price: number) => {
         const rate = currencyRateList[currency]
 
-        return Number(price * rate).toFixed(2)
+        return (price * rate).toFixed(2)
     }
 
-    const totalPrice = productArray.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.price,
-        0
-    )
+    const [totalPrice, setTotalPrice] = useState<number>(0)
+
+    const addPrice = (price: number) => {
+        setTotalPrice(totalPrice + price)
+    }
 
     return (
         <>
@@ -72,11 +73,17 @@ const App = (props: Props) => {
                                         <Typography>{title}</Typography>
                                         <Typography>{description}</Typography>
                                         <Typography>
-                                            {renderPrice(price)} {currency}
+                                            {renderPrice(price)}
+                                            {currency}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button variant="outlined">Buy</Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={() => addPrice(price)}
+                                        >
+                                            Buy
+                                        </Button>
                                     </CardActions>
                                 </Card>
                             )
